@@ -8,14 +8,14 @@ void insertion_sort_list(listint_t **list)
 {
 listint_t *head = *list, *next_node, *prev_node, *current;
 
-while ((*list)->next != NULL)
+while ((*list)->next)
 {
 	if ((*list)->n > (*list)->next->n)
 	{
 		current = *list;
 		next_node = (*list)->next;
 		prev_node = (*list)->prev;
-		if (next_node->next == NULL)
+		if (next_node->next == NULL && prev_node != NULL)
 		{
 			swap_end(current, next_node, prev_node);
 			*list = head;
@@ -68,9 +68,21 @@ c->prev = n;
 */
 void swap_head(listint_t *c, listint_t *n)
 {
-n->prev = NULL;
-n->next->prev = c;
-c->next = n->next;
-n->next = c;
-c->prev = n;
+
+if (n->next == NULL)
+{
+	n->prev = NULL;
+	c->next = NULL;
+	n->next = c;
+	c->prev = n;
+}
+else
+{
+	n->prev = NULL;
+	n->next->prev = c;
+	c->next = n->next;
+	n->next = c;
+	c->prev = n;
+}
+
 }

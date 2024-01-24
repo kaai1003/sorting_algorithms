@@ -6,8 +6,11 @@
 */
 void insertion_sort_list(listint_t **list)
 {
-listint_t *head = *list, *next_node, *prev_node, *current;
+listint_t *head, *next_node, *prev_node, *current;
 
+if (!list || !*list)
+	exit(1);
+head = *list;
 while ((*list)->next)
 {
 	if ((*list)->n > (*list)->next->n)
@@ -19,14 +22,12 @@ while ((*list)->next)
 		{
 			swap_end(current, next_node, prev_node);
 			*list = head;
-			print_list(*list);
 		}
 		else if (prev_node == NULL)
 		{
 			swap_head(current, next_node);
 			head = next_node;
 			*list = head;
-			print_list(*list);
 		}
 		else
 		{
@@ -37,8 +38,8 @@ while ((*list)->next)
 			next_node->next = current;
 			current->prev = next_node;
 			*list = head;
-			print_list(*list);
 		}
+		print_list(*list);
 	}
 	else
 		*list = (*list)->next;
@@ -84,5 +85,4 @@ else
 	n->next = c;
 	c->prev = n;
 }
-
 }

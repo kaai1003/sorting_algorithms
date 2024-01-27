@@ -24,7 +24,7 @@ while (i < size)
 			k = j;
 		}
 	}
-	if (swap == true && k != 0)
+	if (swap == true && k != i)
 	{
 		while (k > i)
 		{

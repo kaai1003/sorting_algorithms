@@ -7,32 +7,27 @@
 */
 void selection_sort(int *array, size_t size)
 {
-size_t i = 0, j = 0, k = 0;
+size_t i = 0, j = 0, k;
 int smalest;
 
-bool swap = false;
-
+k = size - 1;
 while (i < size)
 {
 	smalest = array[i];
-	swap = false;
-	for (j = i; j < size; j++)
+	j = i + 1;
+	while (j < size)
 	{
 		if (smalest > array[j])
 		{
 			smalest = array[j];
-			swap = true;
 			k = j;
 		}
+		j++;
 	}
-	if (swap == true)
+	if (smalest != array[i])
 	{
-		while (k > i)
-		{
-			array[k] = array[k - 1];
-			k--;
-		}
-		array[k] = smalest;
+		array[k] = array[i];
+		array[i] = smalest;
 		print_array(array, size);
 	}
 	i++;

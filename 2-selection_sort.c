@@ -15,6 +15,7 @@ bool swap = false;
 while (i < size)
 {
 	smalest = array[i];
+	swap = false;
 	for (j = i; j < size; j++)
 	{
 		if (smalest > array[j])
@@ -24,7 +25,7 @@ while (i < size)
 			k = j;
 		}
 	}
-	if (swap == true && k != i)
+	if (swap == true)
 	{
 		while (k > i)
 		{
@@ -34,7 +35,6 @@ while (i < size)
 		array[k] = smalest;
 		print_array(array, size);
 	}
-	swap = false;
 	i++;
 }
 }
